@@ -1,0 +1,569 @@
+\documentclass[sigconf]{acmart}
+\AtBeginDocument{\let\balance\relax}
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{placeins}
+\usepackage{listings}
+\usepackage{hyperref}% \toprule, \midrule, \bottomrule
+\usepackage{tabularx}     % X columns (auto width)
+\usepackage{dblfloatfix} 
+\usepackage{caption}
+\captionsetup{labelfont=bf, textfont=normalfont}   % optional but recommended  % fixes table* placement in two-column mode
+\microtypesetup{expansion=false}
+\raggedbottom
+\setlength{\emergencystretch}{3em}
+\setlength{\hfuzz}{50pt}
+\hbadness=10000
+\vbadness=10000
+
+
+\title{Scoping Review}
+\author{Matteo Pallomo, 
+Eva Ledovskaia,
+Andrea Barbantani,
+Alessio Quaranta,
+Marco Farano,
+Elena Ruberto,
+Fiamma Pia Paternò,
+Michele Barale,
+Federico Ciociola,
+Flora D'Angelo.}
+\affiliation{
+  \institution{Politecnico di Torino}
+  \city{Turin}
+  \country{Italy - 2026}
+}
+
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\fancyhead{} 
+
+\begin{document}
+\makeatletter
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\makeatother
+\maketitle 
+
+\section{Abstract}
+
+As artificial intelligence (AI) becomes increasingly embedded in professional workflows, understanding how humans develop and calibrate trust in these systems is critical. This paper presents a scoping review of the literature on trust in human–AI interaction, aiming to identify the key factors that determine whether trust is appropriately calibrated to a system’s actual capabilities. A systematic screening process, applied to highly cited publications from 2015–2026, resulted in a final set of 47 relevant studies.
+
+From this analysis, we derive a general, problem-agnostic framework that conceptualizes trust as a dynamic alignment between objective system properties and users’ subjective perceptions. The framework is structured into five interdependent dimensions: Objective System Properties, Subjective Perception, Human Traits, Contextual Factors, and Adaptive Trust Dynamics. Together, these dimensions capture both the static and evolving nature of trust, including feedback loops, calibration processes, and temporal effects.
+
+To demonstrate its applicability, the framework is applied to a use case in Advanced Driver Assistance Systems (ADAS) engineering, highlighting how trust is shaped in safety-critical environments. The results emphasize that trust extends beyond technical performance, emerging from a complex interplay of cognitive, individual, and contextual factors. This work provides both a conceptual foundation and a practical lens for analyzing and designing trust in AI-enabled systems.
+
+
+\section{Introduction}
+
+As Artificial Intelligence becomes increasingly integrated into the workplace, evolving from a support tool to an integral component of work, it is reshaping how tasks are performed and problems are solved. A key factor in this transformation is the relationship between workers and AI systems, particularly how \emph{trust} is established and maintained.
+
+This work aims to identify \emph{which factors determine whether a worker's trust in an AI system is well-calibrated for a given task}. To this end, we systematically cluster the most relevant factors shaping trust between a \emph{worker} and an \emph{AI system augmenting or automating the worker's task}. This distinction is important, as trust is not a static construct: evidence shows that it evolves through cognitive, emotional, and organizational pathways, and sustained use depends on more than technical performance alone.
+
+Our goal is to develop a general (i.e., problem-agnostic) framework to assess trust between these components. To demonstrate its practical relevance, we subsequently apply the framework to a specific use case.
+
+
+\section{Methods}
+
+In order to review current literature we decided to analyze the key keywords of our research question and then, based on those keywords, to run a query on \emph{Scopus} to retrieve the results. The full query is given in \emph{Appendix A}, however it is worth noticing the following remarks:
+\begin{itemize}
+    \item The query was tailored to provide results between 2015 and 2026.
+    \item The query was tailored to only provide results in English language.
+    \item The query was tailored to only return the following types of publications: \emph{articles, conference papers, book chapters, reviews, conference reviews and short surveys}.
+\end{itemize}
+
+The query returned approximately 11{,}000 results. To obtain a manageable subset for initial screening, results were sorted in descending order of number citations. From this ranked list, the first 600 papers were selected. This threshold corresponded approximately to the point at which publications had fewer than 100 citations, thereby prioritizing studies with higher academic impact.
+The selected records were exported into CSV document and brought to a shared spreadsheet. 
+We firstly researched duplicates papers. This resulted in the removal of a single paper (same publication appearing under different journals), resulting in 599 unique papers to start our selection process from. 
+
+Following the duplicate removal, we proceeded with a title screening phase. The dataset was divided among 10 reviewers, each assessing approximately 60 papers. In this phase, our inclusion/exclusion criteria were the following:
+
+\begin{itemize}
+    \item Titles where trust did not appear to be a primary or central concept.
+    \item Titles that were overly domain-specific (e.g., focused exclusively on marketing, healthcare, or other narrow applications).
+    \item Titles suggesting a purely technical focus without a human--AI interaction component.
+\end{itemize}
+
+
+This process reduced the number of candidate papers to 265.
+
+Subsequently, the remaining papers underwent abstract screening. In this phase, all reviewers contributed collaboratively using a shared spreadsheet. A locking mechanism was adopted, whereby each paper was reviewed by a single researcher at a time, who recorded their decision in a dedicated column. Although this approach does not ensure independent double screening, it enabled efficient allocation of effort across the team.
+
+In this phase, the following overall inclusion/exclusion criteria were defined:
+\begin{itemize}
+    \item Inclusion of studies explicitly addressing trust in AI, automation, or human--AI interaction.
+    \item Exclusion of studies lacking a clear human-centered perspective (e.g., purely algorithmic or technical contributions).
+    \item Exclusion of studies where trust was only marginally mentioned and not analytically developed.
+\end{itemize}
+
+Papers that met the inclusion criteria after abstract screening were retained and constituted the final set of studies included in the review. Whilst reviewing each paper we performed the following actions:
+
+\begin{itemize}
+\item Mark the paper as \emph{theoretical, empirical or practical}.
+\item Give each paper a unique reference (internal to the group). This enabled to automate some processes (\emph{e.g.} citations references generation). 
+\end{itemize}
+
+The table \ref{tab:selection_summary} summarizes the overall results (and a PRISMA flowchart can be found in Appendix A):
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Stage} & \textbf{Pass} & \textbf{Fail} \\
+\midrule
+Total Papers & \multicolumn{2}{c}{599 (100\%)} \\
+
+Title Screening & 266 (44.4\%) & 333 (55.6\%) \\
+
+Abstract Screening & 47 (17.7\%)$^{+}$ & 218 (82.3\%)$^{+}$ \\
+\midrule
+
+\multicolumn{3}{l}{\textit{Final Classification (n = 47)}} \\
+
+Empirical   & \multicolumn{2}{c}{24 (51.1\%)$^{*}$} \\
+Theoretical & \multicolumn{2}{c}{22 (46.8\%)$^{*}$} \\
+Practical   & \multicolumn{2}{c}{1 (2.1\%)$^{*}$} \\
+\midrule
+
+\multicolumn{3}{p{0.9\linewidth}}{\footnotesize
+$^{+}$ Percentages for abstract screening are relative to papers after title screening ($n = 265$).} \\
+
+\multicolumn{3}{p{0.9\linewidth}}{\footnotesize
+$^{*}$ Percentages are relative to the final selected papers ($n = 47$).} \\
+
+\bottomrule
+\end{tabular}
+\caption{Paper Selection and Classification Summary}
+\label{tab:selection_summary}
+\end{table}
+During the review process each researchers noted down keywords and definitions from the paper he/she was reviewing. 
+When the process was complete, a framework clearly emerged from the interaction of those keywords and concepts. The framework will be the scope of our next sections.
+
+\section{Framework Overview}
+
+At its core, the framework conceptualizes trust as a \emph{dynamic alignment problem}. Specifically, trust is defined as the degree to which a user's subjective perception of an AI system corresponds to the system’s actual, objective capabilities. This condition is commonly referred to as \emph{trust calibration} \cite{jacovi_2021_formalizing_trust_ai, carsten_hmi_automated_cars}. Misalignment leads to overtrust or undertrust, both of which can degrade performance and safety.
+
+This alignment is not fixed, but evolves through interaction, feedback, and learning. Users continuously update their mental models based on observed system behavior, forming a feedback loop between experience and expectation \cite{john_measurement_of_trust, de_visser_longitudinal_trust}.
+
+The framework is organized into five interdependent macro-categories. \emph{Objective Performance} properties represent the ground truth of the system’s capabilities. \emph{Subjective Perception} captures how these capabilities are interpreted by users. \emph{Human Traits} influence how perception is formed, while \emph{Context} shapes both the relevance and consequences of trust. Finally, \emph{Adaptive Trust Dynamics} describes how trust evolves over time through calibration, feedback, and learning mechanisms \cite{schepman_general_attitude, choudhury_chat_gpt}.
+
+A summary of the framework is given in figure \ref{fig:framework_pic}, and table \ref{tab:trust_framework_summary}. Moreover, in \emph{Appendix B}, the full summary table can be found.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Framework.pdf}
+    \caption{\textbf{Framework Summary} --- Four main dimensions are involved in the formation of trust: \emph{Objective Metrics, Subjective Perception, Human Traits, and Context}. These dimensions evolve over time through \emph{Adaptive Trust Dynamics}.}
+    \label{fig:framework_pic}
+\end{figure}
+
+
+\begin{table*}[t]
+\centering
+\begin{tabular}{p{0.22\textwidth} p{0.28\textwidth} p{0.42\textwidth}}
+\toprule
+\textbf{Layer} & \textbf{Key Factors} & \textbf{Interpretation} \\
+\midrule
+
+Objective Performance
+& Performance; Technical Behavior; Governance \& Ethics 
+& Represents the system’s actual capabilities and trustworthiness, including correctness, reliability, consistency, transparency, privacy, and institutional safeguards. \\
+
+\midrule
+
+Subjective Perception 
+& Perceived Performance; Interpretability; Social Perception 
+& Captures how users interpret the system, including perceived usefulness and ease of use, explainability and transparency, as well as social and affective responses such as credibility, empathy, and bias. \\
+
+\midrule
+
+Human Traits 
+& Disposition; Experience; Personality 
+& Individual characteristics (e.g., trust propensity, expertise, familiarity, technophobia) that influence how objective evidence is interpreted and translated into trust. \\
+
+\midrule
+
+Contextual Factors 
+& Task; Risk; Environment; Governance Context 
+& Situational conditions shaping trust, including task criticality, uncertainty, human oversight, organizational constraints, and broader institutional trust. \\
+
+\midrule
+
+Adaptive Trust Dynamics 
+& Calibration; Feedback; Learning; Temporal Evolution 
+& Describes how trust evolves over time through interaction, including feedback loops, trust calibration, asymmetry effects, and mechanisms such as trust transfer and mediation. \\
+
+\bottomrule
+\end{tabular}
+\caption{Summary of trust framework dimensions and their roles}
+\label{tab:trust_framework_summary}
+\end{table*}
+
+\section{Objective System Properties}
+
+Objective system properties correspond to measurable and verifiable characteristics of the AI system. These properties define the system’s actual trustworthiness independently of user perception.
+
+A primary dimension is \emph{performance}, which includes correctness, reliability, error rate, efficiency, functionality, and output quality \cite{afroogh_trust_in_ai, Rheuetal.2020.SystematicReviewTrustBuildingFactors, hayes2017improving, schepman_general_attitude, choudhury_chat_gpt}. These factors determine whether the system can achieve its intended task accurately and consistently.
+
+Beyond raw performance, \emph{technical behavior} plays a critical role. Consistency, predictability, and responsivity enable users to form stable expectations and reduce uncertainty \cite{yang_wibowo_2022, carsten_hmi_automated_cars, chiou_trusting_automation}. Systems that behave in a stable and interpretable manner facilitate trust calibration by making their behavior easier to anticipate.
+
+Additional mechanisms such as explicit communication of uncertainty and system confidence provide important calibration cues, helping users understand when reliance is appropriate and when caution is required \cite{Buçinca_Proxy_tasks, haeuslschmid_SupportingTrustAutonomousDriving, okamura_yamada_2020}.
+
+Finally, trust is strongly influenced by \emph{governance and ethical properties}. Privacy, integrity, fairness, and institutional safeguards extend trust beyond technical performance into broader socio-technical considerations \cite{aoki_chatbot_experimental, nazar_hci_xai_healthcare, habbal2024artificial, schepman_general_attitude}. Data integrity and robustness are also critical, as biased or unreliable data sources undermine system credibility \cite{wang_2019_artificial_intelligence_future_humanity, Aldoseri_et_al_2023}.
+
+\section{Subjective Perception}
+
+While objective properties define what the system is capable of, trust ultimately depends on how these capabilities are \emph{perceived} by users. Subjective perception encompasses cognitive evaluation, interpretation, and affective response.
+
+A key component is \emph{perceived performance}. Constructs such as perceived usefulness, perceived ease of use, and confidence directly influence willingness to rely on AI systems \cite{zhang_automated_vehicle_acceptance, hayes2017improving, schepman_general_attitude, choudhury_chat_gpt}. Importantly, perceived performance may diverge from actual performance, leading to miscalibrated trust.
+
+\emph{Interpretability} is another central dimension. Transparency, explainability, understandability, and controllability allow users to make sense of system outputs and decisions, reducing ambiguity and supporting informed reliance \cite{afroogh_trust_in_ai, glickson_2020_review_of_empirical_research, naiseh_2023_class, schepman_general_attitude}. Perceived goal alignment further strengthens trust by ensuring that users believe the system operates according to their intentions \cite{afroogh_trust_in_ai}.
+
+In addition, \emph{social and affective perception} plays a significant role. Anthropomorphism, perceived benevolence, credibility, and emotional responses influence trust independently of objective performance \cite{chi_formative_scale, yang_wibowo_2022, bach_systematic_literature_review, schepman_general_attitude}. Perceived social biases and relatability further shape how users evaluate AI systems \cite{afroogh_trust_in_ai, bach_systematic_literature_review}. These elements highlight that trust is not purely rational, but is profoundly influenced by social interpretation and emotional involvement. \cite{afroogh_trust_in_ai, jacovi_2021_formalizing_trust_ai, bach_systematic_literature_review}
+
+Finally, subjective perception directly influences \emph{behavioral outcomes}, such as intention to use and actual system usage, highlighting its central role in determining effective human–AI interaction \cite{choudhury_chat_gpt}.
+
+\section{Human Traits}
+
+Human traits represent relatively stable individual characteristics that influence how users perceive and interact with AI systems. These traits act as a cognitive filter through which objective system properties are interpreted.
+
+Key factors include trust propensity, trusting stance, technophobia, expertise, and familiarity \cite{Rheuetal.2020.SystematicReviewTrustBuildingFactors, tussyadiah_do_travelers_trust, What_factors_contribute_to_the_acceptance_of_artificial_intelligence, zhang_et_al_2023, chi_formative_scale}. Individuals with a higher propensity to trust or a positive attitude toward technology are more likely to rely on AI systems, whereas technophobia or, in general, a limited propensity towards technology, introduces skepticism and resistance.
+
+Experience and expertise are particularly important for trust calibration. Users with higher competence are better able to assess system limitations and interpret outputs critically, reducing the likelihood of overreliance \cite{Wang_yin_2021, Aldoseri_et_al_2023}. Conversely, limited expertise may lead to blind trust or excessive caution.
+
+Importantly, these traits do not directly determine trust, but influence how objective evidence is translated into subjective perception.
+
+\section{Contextual Factors}
+
+Trust is inherently context-dependent. The same system may be trusted or distrusted depending on task characteristics, risk levels, and environmental conditions.
+
+Task characteristics and criticality strongly influence trust decisions. Users tend to rely more on AI in structured and analytical tasks, while exhibiting greater caution in high-stakes or socially complex scenarios \cite{glickson_2020_review_of_empirical_research, choudhury_asan_2020_trust_clinicians}. Trust is closely linked to vulnerability and risk, as reliance on AI exposes users to potential negative consequences \cite{jacovi_2021_formalizing_trust_ai, de_visser_longitudinal_trust}.
+
+Other factors such as environmental and organizational may further shape trust. For example, these may include the presence of human oversight, facilitating conditions, readiness mismatches, and perceived threats to professional identity \cite{young_patient_systematic_review, chi_formative_scale, bach_systematic_literature_review}. 
+
+Broader socio-economic and institutional conditions also play a role. Governance frameworks, corporate trust, and societal perceptions of AI influence baseline trust levels and adoption willingness \cite{wang_2019_artificial_intelligence_future_humanity, schepman_general_attitude}. Additionally, concerns such as overreliance risk and human–AI substitution introduce context-specific trust dynamics, particularly in safety-critical or high-responsibility domains \cite{choudhury_chat_gpt, aoki_chatbot_experimental}.
+
+\section{Adaptive Trust Dynamics}
+
+Trust is not static but evolves over time through interaction. This macro-category captures the mechanisms governing the temporal evolution of trust.
+
+At the center of this process lies \emph{trust calibration}, defined as the alignment between perceived and actual system performance \cite{jacovi_2021_formalizing_trust_ai}. Calibration is supported by feedback loops, where interaction outcomes continuously update user beliefs \cite{john_measurement_of_trust, de_visser_longitudinal_trust}.
+
+This process is inherently asymmetric: failures have a stronger negative impact on trust than successful interactions have in increasing it \cite{kaplan2021trust}. As a result, trust can degrade rapidly after errors, while recovery requires sustained evidence of reliability.
+
+Over time, trust evolves through mechanisms such as trust repair, trust dampening, and broader temporal adaptation \cite{de_visser_longitudinal_trust, vereschak2021evaluate}. Users gradually refine their mental models, improving their ability to calibrate reliance decisions.
+
+Additional mechanisms further enrich this dynamic perspective. Trust can transfer from related entities (e.g., developers or institutions) to AI systems \cite{schepman_general_attitude}. Moreover, trust often influences behavior through mediation processes, where it shapes intention, which in turn drives actual usage \cite{choudhury_chat_gpt}.
+
+Finally, system-side adaptation also contributes to trust dynamics. Continuous learning and performance evolution modify future interactions, further influencing how trust develops over time \cite{wang2019artificial}.
+
+\section{Worked Use Case}
+
+\subsection{Application to ADAS System Engineering}
+
+We apply the proposed framework to the context of a \emph{System Engineer} working on \emph{Advanced Driver Assistance Systems (ADAS)}, focusing on an AI-based tool supporting requirement generation and traceability.
+
+\paragraph{Objective System Properties}
+
+In this domain, trust is strongly grounded in measurable system properties. Core performance dimensions include \textbf{correctness}, \textbf{reliability}, \textbf{error rate}, and \textbf{output quality} of generated requirements \cite{afroogh_trust_in_ai, Rheuetal.2020.SystematicReviewTrustBuildingFactors}. In particular:
+
+\begin{itemize}[leftmargin=*, label=\textbullet]
+    \item \textbf{Requirement correctness}: whether generated requirements accurately reflect system design intent. Incorrect outputs directly undermine trust and increase verification burden.
+    
+    \item \textbf{Traceability completeness}: whether requirements are properly linked to upstream and downstream artifacts (e.g., system elements, test cases). Missing links reduce auditability and certification readiness.
+    
+    \item \textbf{Requirement testability}: whether requirements are expressed in a way that enables objective validation through test cases.
+\end{itemize}
+
+Beyond performance, \textbf{consistency} and \textbf{predictability} are critical technical behavior properties \cite{yang_wibowo_2022, carsten_hmi_automated_cars}. Engineers rely on stable outputs to form reliable workflows and mental models. Additionally, mechanisms such as \textbf{uncertainty communication} (e.g., confidence scores) can support trust calibration by indicating when outputs require additional scrutiny \cite{Buçinca_Proxy_tasks, haeuslschmid_SupportingTrustAutonomousDriving}.
+
+Finally, \textbf{governance and compliance} aspects are central in ADAS. Concerns such as \textbf{data integrity}, \textbf{traceability transparency}, and \textbf{accountability} are critical for certification processes (e.g., ISO-26262, UNECE homologations, NCAP standards), and strongly influence trust independently of raw performance \cite{Aldoseri_et_al_2023, choudhury_chat_gpt}.
+
+\paragraph{Subjective Perception}
+
+Trust is mediated by how engineers perceive system outputs during interaction. \textbf{Perceived usefulness}, \textbf{confidence}, and \textbf{perceived ease of use} influence whether the system is considered practically valuable \cite{zhang_automated_vehicle_acceptance, schepman_general_attitude, choudhury_chat_gpt}.
+
+Several perception-specific factors are particularly relevant:
+
+\begin{itemize}[leftmargin=*, label=\textbullet]
+    \item \textbf{Readability}: clarity and structure of generated requirements. Poor readability increases cognitive load and reduces trust.
+    
+    \item \textbf{Alignment with expectations}: degree to which outputs match the engineer’s mental model and design intent. Misalignment can lead to distrust even when outputs are objectively correct.
+    
+    \item \textbf{Explainability}: ability to understand why a requirement or trace link was generated. Limited explainability reduces willingness to rely on outputs \cite{glickson_2020_review_of_empirical_research}.
+\end{itemize}
+
+Interpretability dimensions such as \textbf{transparency} and \textbf{understandability} further support trust by making system behavior cognitively accessible \cite{naiseh_2023_class, schepman_general_attitude}. 
+
+Additionally, subjective perception influences \textbf{behavioral outcomes}, such as intention to use and actual reliance. Even high-performing systems may be underutilized if they are perceived as unreliable or difficult to interpret \cite{choudhury_chat_gpt}.
+
+\paragraph{Human Traits}
+
+Individual characteristics influence how system behavior is interpreted. \textbf{Expertise}, \textbf{familiarity}, and \textbf{technical competence} enable engineers to better assess system outputs and limitations, supporting more accurate trust calibration \cite{zhang_et_al_2023, Wang_yin_2021, Aldoseri_et_al_2023}.
+
+Conversely, traits such as \textbf{technophobia} or low trust propensity may lead to conservative reliance, even when system performance is adequate \cite{What_factors_contribute_to_the_acceptance_of_artificial_intelligence, Rheuetal.2020.SystematicReviewTrustBuildingFactors}. However, in the context of a System Engineer working in the Autonomous Driving field, might be highly unlikely to find people reluctant to use/accept autonomous technologies. Nevertheless, these traits might act as a filter between objective system properties and subjective perception, shaping how evidence is interpreted rather than directly determining trust.
+
+\paragraph{Contextual Factors}
+
+ADAS development is inherently safety-critical, which amplifies the role of \textbf{risk} and \textbf{vulnerability} in trust decisions \cite{ de_visser_longitudinal_trust}. Engineers operate under strict validation and certification constraints, leading to low tolerance for errors.
+
+Key contextual factors include:
+
+\begin{itemize}[leftmargin=*, label=\textbullet]
+    \item \textbf{Task criticality}: requirements directly impact safety-relevant functions (e.g., braking, steering), leading to conservative trust strategies \cite{choudhury_asan_2020_trust_clinicians}.
+    
+    \item \textbf{Organizational processes}: strong validation cultures and formal verification workflows may limit reliance on AI-generated artifacts \cite{bach_systematic_literature_review}.
+    
+    \item \textbf{Human oversight}: the presence of a human-in-the-loop mitigates risk but may also signal limited system autonomy \cite{young_patient_systematic_review}.
+\end{itemize}
+
+Broader concerns such as \textbf{professional accountability}, \textbf{certification acceptance}, and \textbf{automation-related job impact} further influence trust independently of system performance \cite{ choudhury_chat_gpt}. An engineer might be reluctant to generate outputs with an AI system because, his/her colleagues might judge him and lazy and/or incompetent, introducing also a layer of \emph{social perception}.
+
+\paragraph{Adaptive Trust Dynamics}
+
+Trust evolves through repeated interaction. Engineers continuously update their beliefs about system capabilities through \textbf{feedback loops}, where observed outcomes influence future reliance decisions \cite{john_measurement_of_trust, de_visser_longitudinal_trust}.
+
+A critical property of this evolution is \textbf{asymmetry}: failures have a stronger negative impact on trust than successful interactions have in increasing it \cite{kaplan2021trust}. In safety-critical domains, even a single critical error can significantly reduce trust.
+
+Relevant dynamic factors include:
+
+\begin{itemize}[leftmargin=*, label=\textbullet]
+    \item \textbf{Consistency and repeatability}: stable outputs enable the formation of accurate mental models \cite{yang_wibowo_2022}.
+    
+    \item \textbf{Error experience}: unexpected or severe failures trigger rapid trust degradation.
+    
+    \item \textbf{Trust repair}: recovery from failures requires sustained evidence of reliability over time \cite{de_visser_longitudinal_trust}.
+\end{itemize}
+
+Over time, engineers develop calibrated trust, learning when to rely on the system and when to intervene. This process may also involve \textbf{trust transfer} from institutional or organizational trust, and \textbf{mediation effects} where trust influences intention and usage behavior \cite{schepman_general_attitude, choudhury_chat_gpt}.
+
+Finally, system-side evolution—such as continuous improvement of AI models—further shapes trust trajectories by modifying future interaction outcomes \cite{wang2019artificial}.
+
+
+\section{Conclusions}
+
+This work proposed a structured framework to analyze trust in human--AI interaction as a \emph{calibration problem}, defined by the alignment between a system’s objective capabilities and the user’s subjective perception of those capabilities. By synthesizing evidence from the literature, we identified five interdependent macro-categories shaping this alignment: \emph{Objective System Properties}, \emph{Subjective Perception}, \emph{Human Traits}, \emph{Contextual Factors}, and \emph{Adaptive Trust Dynamics}.
+
+A key contribution of this work is the explicit integration of these dimensions into a unified model that captures both static and dynamic aspects of trust. In particular, the framework highlights that trust cannot be reduced to system performance alone, but emerges from the interaction between measurable properties, cognitive interpretation, individual differences, and situational constraints. Furthermore, by modeling trust as a temporal process, the framework accounts for feedback loops, asymmetries in trust evolution, and the progressive calibration of user expectations.
+
+The application to an ADAS system engineering use case demonstrates the practical relevance of the framework. In safety-critical domains, trust is strongly influenced not only by objective performance metrics such as correctness and reliability, but also by interpretability, validation effort, and organizational constraints. The results show that even highly capable systems may be used conservatively when contextual risks and accountability concerns are high, reinforcing the need to consider trust as a socio-technical phenomenon.
+
+Overall, this work contributes a generalizable and problem-agnostic perspective on trust in AI systems, providing both a conceptual foundation and a practical lens for analyzing trust calibration in real-world settings.
+
+\section{Gaps and Future Work}
+
+While the proposed framework provides a structured view of trust in human--AI interaction, several limitations and open research directions remain.
+
+First, the framework is primarily conceptual and does not provide a formal or quantitative model of trust calibration. Future work should aim to operationalize the relationships between dimensions and develop measurable indicators to enable empirical validation.
+
+Second, the literature selection introduces potential bias. Only English-language publications were considered, which may exclude relevant contributions from other research communities. Moreover, prioritizing highly cited articles risks systematically excluding more recent studies (e.g., published between 2024 and 2026) that have not yet accumulated sufficient citations—an important limitation in a rapidly evolving field such as artificial intelligence. Additionally, the analysis may reflect a \emph{technical bias}, as the authors’ background is predominantly in engineering, potentially emphasizing system-centric aspects of trust over social or organizational perspectives. Finally, only one practical source has been included in the review.
+
+Furthermore, a subset of the analyzed literature focuses on \emph{Autonomous Driving}. This introduces a potential domain bias that may skew the identified factors toward this application area. While this is beneficial for the ADAS use case, it may reduce the generality of the framework.
+
+Finally, the framework has been illustrated through a single domain-specific use case (ADAS). Further validation across multiple domains and contexts is necessary to assess its generalizability and refine its applicability.
+
+Addressing these limitations would support the transition from a descriptive framework to a more robust and generalizable model for analyzing and designing trust in AI systems.
+
+\clearpage
+\section{Appendix A - Selection Process Details}
+
+\subsection{Scopus Query}
+
+Query was run on: 15/04/2026 (dd/mm/yyy).
+
+\begin{verbatim}
+(
+    "trust in artificial intelligence"
+    OR "trust in automation"
+    OR "trust calibration"
+) AND
+(
+    LIMIT-TO ( DOCTYPE , "ar" )
+    OR LIMIT-TO ( DOCTYPE , "cp" )
+    OR LIMIT-TO ( DOCTYPE , "re" )
+    OR LIMIT-TO ( DOCTYPE , "ch" )
+    OR LIMIT-TO ( DOCTYPE , "cr" )
+    OR LIMIT-TO ( DOCTYPE , "sh" )
+) AND
+(
+    LIMIT-TO ( LANGUAGE , "English" )
+) AND 
+PUBYEAR > 2015 AND PUBYEAR < 2026
+\end{verbatim}
+
+\subsection{PRISMA Diagram}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{PRISMA_Flow.pdf}
+    \caption{\textbf{PRISMA Diagram} --- diagram for our selection process.}
+    \label{fig:prism}
+\end{figure}
+
+\section{Appendix B - Summary Tables}
+
+\onecolumn
+\begin{longtable}{l l l l p{4cm}}
+\toprule
+Reference & Factor & Layer & Subdivision & Interpretation \\
+\midrule
+\endfirsthead
+\toprule
+Reference & Factor & Layer & Subdivision & Interpretation \\
+\midrule
+\endhead
+\cite{jacovi_2021_formalizing_trust_ai} & Warranted Trust (Calibration) & Adaptive Trust Dynamics & Calibration & Alignment between perceived and actual trustworthiness \\
+\cite{carsten_hmi_automated_cars} & Calibration & Adaptive Trust Dynamics & Calibration & Understanding system capabilities for correct reliance \\
+\cite{de_visser_longitudinal_trust} & Feedback loop & Adaptive Trust Dynamics & Feedback & Outcomes influence future trust \\
+\cite{wang2019artificial} & Continuous learning & Adaptive Trust Dynamics & Learning & System adapts over time \\
+\cite{wang2019artificial} & Evolution & Adaptive Trust Dynamics & Learning & System evolves and improves performance \\
+\cite{vereschak2021evaluate} & Static vs. Dynamic Trust & Adaptive Trust Dynamics & Temporal Evolution & Trust changes over time through interaction \\
+\cite{schepman_general_attitude} & Trust Transfer & Adaptive Trust Dynamics & Transfer Mechanism & Process by which trust in humans extends to AI systems they design \\
+\cite{choudhury_chat_gpt} & Mediation (Trust → Intent → Use) & Adaptive Trust Dynamics & Temporal Evolution & Process where intent to use mediates the effect of trust on actual usage behavior \\
+\cite{glickson_2020_review_of_empirical_research} & Task Characteristics & Context & Task & Trust varies depending on task type \\
+\cite{jacovi_2021_formalizing_trust_ai} & Vulnerability / Risk & Context & Risk & Trust involves exposure to potential failure \\
+\cite{de_visser_longitudinal_trust} & Vulnerability / Risk & Context & Risk & Trust involves exposure to potential failure \\
+\cite{young_patient_systematic_review} & Human in the loop & Context & Environment & Presence of human oversight \\
+\cite{chi_formative_scale} & Facilitating conditions & Context & Environment & Availability of supporting resources \\
+\cite{bach_systematic_literature_review} & Readiness Mismatch & Context & Environment & Mismatch between system and user readiness \\
+\cite{banh2023generative} & Threat to Professional Identity & Context & Environment & Employees fear losing their jobs due to automation potential. \\
+\cite{arlasan_artificial_intelligence} & Threat to Professional Identity & Context & Environment & Employees fear losing their jobs due to automation potential. \\
+\cite{choudhury_asan_2020_trust_clinicians} & Uncertainty Management & Context & Task & Trust helps workers manage the uncertainty of relying on imperfect AI suggestions in high-stakes tasks. \\
+\cite{schepman_general_attitude} & Corporate Distrust & Context & Governance Trust Context & Degree to which users distrust corporations responsible for AI systems \\
+\cite{choudhury_chat_gpt} & Vulnerability / Risk & Context & Risk & Awareness that relying on ChatGPT involves potential negative consequences especially in high-stakes contexts \\
+\cite{aoki_chatbot_experimental} & Intent Framing (Purpose Communication) & Context & Environment & Effect of communicated benefits (e.g. 24/7 access, uniformity) on trust formation \\
+\cite{SangseokYou_CathyLiuYang_Xitong_2022} & User Propensity & Human Traits & Disposition & Baseline tendency to trust technology \\
+\cite{tussyadiah_do_travelers_trust} & Trusting stance & Human Traits & Disposition & General belief that technology leads to positive outcomes \\
+\cite{What_factors_contribute_to_the_acceptance_of_artificial_intelligence} & Technophobia & Human Traits & Disposition & Fear or resistance toward AI \\
+\cite{chi_formative_scale} & Familiarity & Human Traits & Experience & Experience reduces uncertainty and increases trust \\
+\cite{zhang_automated_vehicle_acceptance} & First Hand Knowledge & Human Traits & Experience & Technical knowledge before interaction \\
+\cite{schepman_general_attitude} & Trusting stance & Human Traits & Disposition & General tendency of individuals to trust others and technological systems \\
+\cite{schepman_general_attitude} & User Expertise & Human Traits & Experience & Level of user knowledge or familiarity with technology influencing trust \\
+\cite{Aldoseri_et_al_2023} & Technical Expertise & Human Traits & Experience & The worker's level of competence influences his ability to calibrate trust (avoid over-trust). \\
+\cite{aoki_chatbot_experimental} & Privacy & Objective Metrics & Governance \& Ethics & Protection of personal and sensitive data \\
+\cite{nazar_hci_xai_healthcare} & Privacy & Objective Metrics & Governance \& Ethics & Protection of personal and sensitive data \\
+\cite{afroogh_trust_in_ai} & Privacy & Objective Metrics & Governance \& Ethics & Protection of personal and sensitive data \\
+\cite{afroogh_trust_in_ai} & Trust through Governance & Objective Metrics & Governance \& Ethics & Institutional mechanisms ensuring reliability \\
+\cite{aoki_chatbot_experimental} & Performance (Technical Competence) & Objective Metrics & Performance & Ability of the chatbot to provide correct and useful answers to citizen enquiries \\
+\cite{aoki_chatbot_experimental} & Process Transparency & Objective Metrics & Governance \& Ethics & Understanding of how the chatbot works and how decisions are generated \\
+\cite{afroogh_trust_in_ai} & Goal Alignment & Subjective Perception & Interpretability & Perceived alignment between the goal of the trustoor and trustee. \\
+\cite{jacovi_2021_formalizing_trust_ai} & Goal Alignment & Subjective Perception & Interpretability & Perceived alignment between the goal of the trustoor and trustee. \\
+\cite{afroogh_trust_in_ai} & Transparency & Subjective Perception & Interpretability & Perceived visibility of system logic \\
+\cite{glickson_2020_review_of_empirical_research} & Transparency & Subjective Perception & Interpretability & Perceived visibility of system logic \\
+\cite{Bingjie_2021} & Transparency & Subjective Perception & Interpretability & Perceived visibility of system logic \\
+\cite{Trust_calibratiotrust_calibration_within_a_human-robot_team} & Explainability & Subjective Perception & Interpretability & Ability of system to explain decisions \\
+\cite{vilone_longo_2021} & Explainability & Subjective Perception & Interpretability & Ability of system to explain decisions \\
+\cite{afroogh_trust_in_ai} & Explainability & Subjective Perception & Interpretability & Ability of system to explain decisions \\
+\cite{Graaf_Malle_2017} & Explainability & Subjective Perception & Interpretability & Ability of system to explain decisions \\
+\cite{naiseh_2023_class} & Understandability & Subjective Perception & Interpretability & Clarity of explanations from user perspective \\
+\cite{Vaithilingam_Zhang_Glassman_2022} & Understandability & Subjective Perception & Interpretability & Clarity of explanations from user perspective \\
+\cite{zhang_automated_vehicle_acceptance} & Perceived usefulness (PU) & Subjective Perception & Perceived Performance & Belief system improves job performance \\
+\cite{zhang_automated_vehicle_acceptance} & Perceived ease of use (PEOU) & Subjective Perception & Perceived Performance & Perceived effort required to use system \\
+\cite{hayes2017improving} & Confidence & Subjective Perception & Perceived Performance & User confidence in system outputs \\
+\cite{chi_formative_scale} & Anthropomorphism & Subjective Perception & Social Perception & Perception of human-like characteristics \\
+\cite{Rheuetal.2020.SystematicReviewTrustBuildingFactors} & Agent Personality & Subjective Perception & Social Perception & Perceived personality traits \\
+\cite{yang_wibowo_2022} & Benevolence & Subjective Perception & Social Perception & Perceived goodwill of the system \\
+\cite{afroogh_trust_in_ai} & Benevolence & Subjective Perception & Social Perception & Perceived goodwill of the system \\
+\cite{afroogh_trust_in_ai} & Social Bias & Subjective Perception & Social Perception & Perceived social biases of the system. \\
+\cite{bach_systematic_literature_review} & Relatability & Subjective Perception & Social Perception & User emotional connection with system \\
+\cite{bach_systematic_literature_review} & Perceived credibility & Subjective Perception & Social Perception & Perceived expertise and honesty \\
+\cite{de_visser_longitudinal_trust} & Relationship Equity & Subjective Perception & Social Perception & is an emotional resource that predicts the degree of goodwill between two actors \\
+\cite{penmetsa_2019_perceptions_autonomous_vehicles} & Safety Beliefs & Subjective Perception & Cognitive & Pedestrians and cyclists intellectually associate AV adoption with improved road safety and better traffic flow. \\
+\cite{penmetsa_2019_perceptions_autonomous_vehicles} & Interaction Anxiety & Subjective Perception & Affective & Direct interaction experience with AVs significantly reduces user fear and increases emotional comfort levels. \\
+\cite{chiou_trusting_automation} & Responsivity & Objective Metrics & Technical Behavior & Adaptation to environment and user cues \\
+\cite{kaplan2021trust} & Asymmetric Reliability Impact & Adaptive Trust Dynamics & Asymmetry & Failures reduce trust more than success increases it \\
+\cite{kaplan2021trust} & Human Propensity to Trust & Human Traits & Disposition & Internal user traits and prior experience with technology serve as a baseline for initial trust before any interaction with the specific AI occurs. \\
+\cite{john_measurement_of_trust} & Feedback loop & Adaptive Trust Dynamics & Feedback & Outcomes influence future trust \\
+\cite{Buçinca_Proxy_tasks} & Explainability & Subjective Perception & Interpretability & Ability of system to explain decisions \\
+\cite{habbal2024artificial} & Trust through Governance & Objective Metrics & Governance \& Ethics & Institutional mechanisms ensuring reliability \\
+\cite{larson_LeadingTeamsDigitalAge} & AI-Human Teaming Dynamics & Context & Governance Trust Context & Trust shifts from interpersonal reliability to system-based reliability when AI is integrated as a functional member of a professional team. \\
+\cite{Wang_yin_2021} & Domain Expertise & Human Traits & Experience & A worker's domain expertise determines how effectively AI explanations can help them calibrate trust. \\
+\cite{wang_2019_artificial_intelligence_future_humanity} & Technological Integrity & Objective Metrics & Technical Behavior & Data biases and privacy vulnerabilities act as primary technical barriers to establishing system trust. \\
+\cite{wang_2019_artificial_intelligence_future_humanity} & Algorithmic Transparency & Objective Metrics & Governance \& Ethics & Algorithmic "black boxes" hinder cognitive trust by reducing system explainability and predictability. \\
+\cite{wang_2019_artificial_intelligence_future_humanity} & Psychological Barrier & Human Traits & Disposition & Fear of job displacement and perceived lack of accountability directly diminish affective trust in AI. \\
+\cite{wang_2019_artificial_intelligence_future_humanity} & Socio-Economic Divide & Subjective Perception & Social Perception & Global wealth inequality and the digital divide foster systemic distrust toward AI-driven institutions. \\
+\cite{wang_2019_artificial_intelligence_future_humanity} & Institutional Governance & Objective Metrics & Technical Behavior & Regulatory frameworks and ethical codes serve as essential environmental safeguards that facilitate public trust. \\
+\cite{Chong_2022_Human} & Correctness & Objective Metrics & Performance & Objective correctness of the generated output.\\
+\cite{Hortensius_2018_emotions} & Emotional Accuracy & Subjective Perception & Performance & Social Perception recognize emotions in artificial agents through body movements  and postures alone \\
+\cite{okamura_yamada_2020} & System Reliability & Objective Metrics & Performance & Reliability varies greatly depending on the initial conditions. \\
+\cite{okamura_yamada_2020} & Trust Calibration Cues & Adaptive Trust Dynamics & Calibration & Specific cognitive signals used as an active feedback mechanism to push the user to recalibrate their trust \\
+\cite{zhang_et_al_2023} & User Expertise & Human Traits & Experience & Prior knowledge and experience with system \\
+\cite{Haiyan_Kong_ZihanYin_KayeChon_YueYuan_JinhanYu_2023} & Proactive Personality & Human Traits & Disposition & A worker's proactive personality acts as a key moderator that, alongside trust in AI, allows them to leverage AI-supported autonomy into innovative performance \\
+\cite{haeuslschmid_SupportingTrustAutonomousDriving} & Transparency & Subjective Perception & Interpretability & Visual verification of the system's environmental perception. \\
+\cite{Tong_artificial_intelligence_feedback} & Perceived Empathy & Subjective Perception & Social Perception & Perceived ability of the AI to understand human emotional and contextual nuances. \\
+\bottomrule
+\caption{Trust framework mapping}\\
+\label{tab:trust_framework}\\
+\end{longtable}
+\twocolumn
+
+
+\section{Appendix C: AI usage disclosure}
+In the writing of this document, the following LLM have been used to help the team. In the following table it is possible to find which LLM were used and for what purpose, please reference \ref{tab:llm_usage}:
+
+\begin{table*}[t]
+\centering
+
+\begin{tabular}{p{0.25\textwidth} p{0.65\textwidth}}
+\toprule
+\textbf{LLM Name} & \textbf{Usages} \\
+\midrule
+ChatGPT &
+\begin{itemize}[leftmargin=*, nosep]
+    \item LaTeX formatting help.
+    \item Papers summarization.
+    \item Image generation.
+    \item Document writing (i.e. text enhancement).
+    \item Python automations.
+\end{itemize} \\
+\midrule
+Gemini &
+\begin{itemize}[leftmargin=*, nosep]
+    \item LaTeX formatting help.
+    \item Document writing (i.e. text enhancement).
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
+\caption{Overview of LLMs and Their Usages}
+\label{tab:llm_usage}
+\end{table*}
+
+\clearpage
+\section{Appendix D: Team Members \& Contacts \& Useful Links}
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+\toprule
+\textbf{Name} & \textbf{Surname} & \textbf{Student ID} & \textbf{Email} \\
+\midrule
+Matteo      & Pallomo     & s337855 & s337855@studenti.polito.it \\
+Eva         & Ledovskaia  & s310269 & s310269@studenti.polito.it \\
+Andrea      & Barbantani  & s342878 & s342878@studenti.polito.it \\
+Alessio     & Quaranta    & s351986 & s351986@studenti.polito.it \\
+Marco       & Farano      & s337643 & s337643@studenti.polito.it \\
+Elena       & Ruberto     & s336356 & s336356@studenti.polito.it \\
+Fiamma Pia  & Paternò     & s342654 & s342654@studenti.polito.it \\
+Michele     & Barale      & s341813 & s341813@studenti.polito.it \\
+Federico    & Ciociola    & s341238 & s341238@studenti.polito.it \\
+Flora       & D'Angelo    & s336616 & s336616@studenti.polito.it \\
+\bottomrule
+\end{tabular}
+\caption{Team Members}
+\label{tab:team_members}
+\end{table}
+
+All materials used for the development of this document are available at:
+\href{https://drive.google.com/drive/folders/1Bbh4e1VpDWDiI-Wf9bGyyhhBmM7Cab3q}{Submission Package Link} (before accessing, permisisons must be granted by the owoner of the Drive).
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
