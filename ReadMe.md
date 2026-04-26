@@ -1,6 +1,10 @@
-# Read Me File
+# Scoping Review Extra Material
 
-This zip archive contains the following folders:
+This git repo contains, at the root level:
+-  **`MasterSheet.xlsx`**: spreadsheet used during the review process.
+- **`10_DOT_Scoping_Review_V2.pdf`** : final submission paper.
+
+Moreover, the folliwing subfolders are present:
 
 - **/Images**  
   Contains all images included in the paper.
@@ -11,12 +15,12 @@ This zip archive contains the following folders:
 - **/Latex**  
   Contains the source `.tex` file and the corresponding `.bib` reference file.
 
-Moreover, in the root of the folder is it possible to find the main paper and the working spreadsheet used during the process. The following sections provide extensive details on the spreadsheet.
+> **Note 1:** it is worth noticing that to write the Latex document Prism has been used (https://openai.com/prism/). Since prism is an onoine collaborative Latex editor, it does not generates the usual overhead files created by other Latex interpreters (e.g. TexMaker), therefore these files are not part of the submission. However, the source code should be enough to re-compile the paper. 
 
-**Note**. it is worth noticing that to write the Latex document Prism has been used (https://openai.com/prism/). Since prism is an onoine collaborative Latex editor, it does not generates the usual overhead files created by other Latex interpreters (e.g. TexMaker), therefore these files are not part of the submission. However, the source code should be enough to re-compile the paper. 
+> **Note 2:** the`.bib` file is automatically generated with python. Fields that were not available in the RAW_DATA from Scopus (see below) are ignored in the generation process. 
 ---
 
-## Spreadsheet
+## Master Sheet
 
 The `.xlsx` file used during the review process is the core artifact of this work. It contains multiple sheets, each serving a specific role. A detailed description of each sheet is provided below.
 
@@ -33,15 +37,15 @@ The `.xlsx` file used during the review process is the core artifact of this wor
 
 ---
 
-### 2. PAPERS
+### 2. Papers
 
 This is the **main working sheet** used throughout the review process. It contains all non-duplicate papers and includes the following key columns:
 
 - **Reference**  
   - Unique internal identifier assigned to each paper  
   - Serves as:
-    - the *join key* with the `CODES` sheet  
-    - the identifier for entries in the generated `.bib` file  
+    - the *join key* with the `Codes` sheet.  
+    - the identifier for entries in the generated `.bib` file.  
 
 - **Type**  
   - Classification of the paper: *practical*, *theoretical*, or *empirical*  
@@ -63,12 +67,12 @@ This is the **main working sheet** used throughout the review process. It contai
 
 ---
 
-### 3. CODES
+### 3. Codes
 
 - Contains the extracted codes along with:
   - associated **layer**
   - **sub-layer** classifications  
-- The **Reference** column links each code to its corresponding paper in the `PAPERS` sheet  
+- The **Reference** column links each code to its corresponding paper in the `Papers` sheet  
 
 ---
 
@@ -86,21 +90,15 @@ The `/Automation` folder contains two Python scripts:
 - **main.py**  
   - Executes the automation pipeline  
   - Responsible for:
-    - generating references  
+    - generating references.  
     - producing a LaTeX-compatible summary table (based on the `CODES` sheet)
 
 - **function.py**  
   - Contains supporting utility functions used by `main.py`
 
----
 
-## Notes
+> **Note 1:** A significant portion of the code—especially table generation—was produced with the assistance of ChatGPT.
 
-- **Note 1:**  
-  A significant portion of the code—especially table generation—was produced with the assistance of ChatGPT.
-
-- **Note 2:**  
-  Some variables (e.g., file paths and column names) are **hard-coded**.  
-  To run the scripts correctly:
-  - do **not** modify sheet names in the Excel file  
-  - update the `MASTER_SHEET` variable in `main.py` to point to the local path of the Excel file (`XXXXX`)
+> **Note 2:** Some variables (e.g., file paths and column names) are **hard-coded**. Therefore, to run the script correctly you must:
+>  - do **not** modify sheet names in the Excel file  
+>  - update the `MASTER_SHEET` variable in `main.py` to point to the local path of the Excel file.
