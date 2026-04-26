@@ -153,14 +153,14 @@ At its core, the framework conceptualizes trust as a \emph{dynamic alignment pro
 
 This alignment is not fixed, but evolves through interaction, feedback, and learning. Users continuously update their mental models based on observed system behavior, forming a feedback loop between experience and expectation \cite{john_measurement_of_trust, de_visser_longitudinal_trust}.
 
-The framework is organized into five interdependent macro-categories. \emph{Objective Performance} properties represent the ground truth of the system’s capabilities. \emph{Subjective Perception} captures how these capabilities are interpreted by users. \emph{Human Traits} influence how perception is formed, while \emph{Context} shapes both the relevance and consequences of trust. Finally, \emph{Adaptive Trust Dynamics} describes how trust evolves over time through calibration, feedback, and learning mechanisms \cite{schepman_general_attitude, choudhury_chat_gpt}.
+The framework is organized into five interdependent macro-categories. \emph{Objective System Properties} properties represent the ground truth of the system’s capabilities. \emph{Subjective Perception} captures how these capabilities are interpreted by users. \emph{Human Traits} influence how perception is formed, while \emph{Context} shapes both the relevance and consequences of trust. Finally, \emph{Adaptive Trust Dynamics} describes how trust evolves over time through calibration, feedback, and learning mechanisms \cite{schepman_general_attitude, choudhury_chat_gpt}.
 
 A summary of the framework is given in figure \ref{fig:framework_pic}, and table \ref{tab:trust_framework_summary}. Moreover, in \emph{Appendix B}, the full summary table can be found.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{Framework.pdf}
-    \caption{\textbf{Framework Summary} --- Four main dimensions are involved in the formation of trust: \emph{Objective Metrics, Subjective Perception, Human Traits, and Context}. These dimensions evolve over time through \emph{Adaptive Trust Dynamics}.}
+    \caption{\textbf{Framework Summary} --- Four main dimensions are involved in the formation of trust: \emph{Objective System Properties, Subjective Perception, Human Traits, and Context}. These dimensions evolve over time through \emph{Adaptive Trust Dynamics}.}
     \label{fig:framework_pic}
 \end{figure}
 
@@ -172,7 +172,7 @@ A summary of the framework is given in figure \ref{fig:framework_pic}, and table
 \textbf{Layer} & \textbf{Key Factors} & \textbf{Interpretation} \\
 \midrule
 
-Objective Performance
+Objective System Properties
 & Performance; Technical Behavior; Governance \& Ethics 
 & Represents the system’s actual capabilities and trustworthiness, including correctness, reliability, consistency, transparency, privacy, and institutional safeguards. \\
 
@@ -447,12 +447,12 @@ Reference & Factor & Layer & Subdivision & Interpretation \\
 \cite{schepman_general_attitude} & Trusting stance & Human Traits & Disposition & General tendency of individuals to trust others and technological systems \\
 \cite{schepman_general_attitude} & User Expertise & Human Traits & Experience & Level of user knowledge or familiarity with technology influencing trust \\
 \cite{Aldoseri_et_al_2023} & Technical Expertise & Human Traits & Experience & The worker's level of competence influences his ability to calibrate trust (avoid over-trust). \\
-\cite{aoki_chatbot_experimental} & Privacy & Objective Metrics & Governance \& Ethics & Protection of personal and sensitive data \\
+\cite{aoki_chatbot_experimental} & Privacy & Objective Sys. Properties & Governance \& Ethics & Protection of personal and sensitive data \\
 \cite{nazar_hci_xai_healthcare} & Privacy & Objective Metrics & Governance \& Ethics & Protection of personal and sensitive data \\
-\cite{afroogh_trust_in_ai} & Privacy & Objective Metrics & Governance \& Ethics & Protection of personal and sensitive data \\
-\cite{afroogh_trust_in_ai} & Trust through Governance & Objective Metrics & Governance \& Ethics & Institutional mechanisms ensuring reliability \\
-\cite{aoki_chatbot_experimental} & Performance (Technical Competence) & Objective Metrics & Performance & Ability of the chatbot to provide correct and useful answers to citizen enquiries \\
-\cite{aoki_chatbot_experimental} & Process Transparency & Objective Metrics & Governance \& Ethics & Understanding of how the chatbot works and how decisions are generated \\
+\cite{afroogh_trust_in_ai} & Privacy & Objective Sys. Properties & Governance \& Ethics & Protection of personal and sensitive data \\
+\cite{afroogh_trust_in_ai} & Trust through Governance & Objective Sys. Properties & Governance \& Ethics & Institutional mechanisms ensuring reliability \\
+\cite{aoki_chatbot_experimental} & Performance (Technical Competence) & Objective Sys. Properties & Performance & Ability of the chatbot to provide correct and useful answers to citizen enquiries \\
+\cite{aoki_chatbot_experimental} & Process Transparency & Objective Sys. Properties & Governance \& Ethics & Understanding of how the chatbot works and how decisions are generated \\
 \cite{afroogh_trust_in_ai} & Goal Alignment & Subjective Perception & Interpretability & Perceived alignment between the goal of the trustoor and trustee. \\
 \cite{jacovi_2021_formalizing_trust_ai} & Goal Alignment & Subjective Perception & Interpretability & Perceived alignment between the goal of the trustoor and trustee. \\
 \cite{afroogh_trust_in_ai} & Transparency & Subjective Perception & Interpretability & Perceived visibility of system logic \\
@@ -477,22 +477,22 @@ Reference & Factor & Layer & Subdivision & Interpretation \\
 \cite{de_visser_longitudinal_trust} & Relationship Equity & Subjective Perception & Social Perception & is an emotional resource that predicts the degree of goodwill between two actors \\
 \cite{penmetsa_2019_perceptions_autonomous_vehicles} & Safety Beliefs & Subjective Perception & Cognitive & Pedestrians and cyclists intellectually associate AV adoption with improved road safety and better traffic flow. \\
 \cite{penmetsa_2019_perceptions_autonomous_vehicles} & Interaction Anxiety & Subjective Perception & Affective & Direct interaction experience with AVs significantly reduces user fear and increases emotional comfort levels. \\
-\cite{chiou_trusting_automation} & Responsivity & Objective Metrics & Technical Behavior & Adaptation to environment and user cues \\
+\cite{chiou_trusting_automation} & Responsivity & Objective Sys. Properties & Technical Behavior & Adaptation to environment and user cues \\
 \cite{kaplan2021trust} & Asymmetric Reliability Impact & Adaptive Trust Dynamics & Asymmetry & Failures reduce trust more than success increases it \\
 \cite{kaplan2021trust} & Human Propensity to Trust & Human Traits & Disposition & Internal user traits and prior experience with technology serve as a baseline for initial trust before any interaction with the specific AI occurs. \\
 \cite{john_measurement_of_trust} & Feedback loop & Adaptive Trust Dynamics & Feedback & Outcomes influence future trust \\
 \cite{Buçinca_Proxy_tasks} & Explainability & Subjective Perception & Interpretability & Ability of system to explain decisions \\
-\cite{habbal2024artificial} & Trust through Governance & Objective Metrics & Governance \& Ethics & Institutional mechanisms ensuring reliability \\
+\cite{habbal2024artificial} & Trust through Governance & Objective Sys. Properties & Governance \& Ethics & Institutional mechanisms ensuring reliability \\
 \cite{larson_LeadingTeamsDigitalAge} & AI-Human Teaming Dynamics & Context & Governance Trust Context & Trust shifts from interpersonal reliability to system-based reliability when AI is integrated as a functional member of a professional team. \\
 \cite{Wang_yin_2021} & Domain Expertise & Human Traits & Experience & A worker's domain expertise determines how effectively AI explanations can help them calibrate trust. \\
-\cite{wang_2019_artificial_intelligence_future_humanity} & Technological Integrity & Objective Metrics & Technical Behavior & Data biases and privacy vulnerabilities act as primary technical barriers to establishing system trust. \\
-\cite{wang_2019_artificial_intelligence_future_humanity} & Algorithmic Transparency & Objective Metrics & Governance \& Ethics & Algorithmic "black boxes" hinder cognitive trust by reducing system explainability and predictability. \\
+\cite{wang_2019_artificial_intelligence_future_humanity} & Technological Integrity & Objective Sys. Propertiess & Technical Behavior & Data biases and privacy vulnerabilities act as primary technical barriers to establishing system trust. \\
+\cite{wang_2019_artificial_intelligence_future_humanity} & Algorithmic Transparency & Objective Sys. Properties & Governance \& Ethics & Algorithmic "black boxes" hinder cognitive trust by reducing system explainability and predictability. \\
 \cite{wang_2019_artificial_intelligence_future_humanity} & Psychological Barrier & Human Traits & Disposition & Fear of job displacement and perceived lack of accountability directly diminish affective trust in AI. \\
 \cite{wang_2019_artificial_intelligence_future_humanity} & Socio-Economic Divide & Subjective Perception & Social Perception & Global wealth inequality and the digital divide foster systemic distrust toward AI-driven institutions. \\
 \cite{wang_2019_artificial_intelligence_future_humanity} & Institutional Governance & Objective Metrics & Technical Behavior & Regulatory frameworks and ethical codes serve as essential environmental safeguards that facilitate public trust. \\
-\cite{Chong_2022_Human} & Correctness & Objective Metrics & Performance & Objective correctness of the generated output.\\
+\cite{Chong_2022_Human} & Correctness & Objective Sys. Properties & Performance & Objective correctness of the generated output.\\
 \cite{Hortensius_2018_emotions} & Emotional Accuracy & Subjective Perception & Performance & Social Perception recognize emotions in artificial agents through body movements  and postures alone \\
-\cite{okamura_yamada_2020} & System Reliability & Objective Metrics & Performance & Reliability varies greatly depending on the initial conditions. \\
+\cite{okamura_yamada_2020} & System Reliability & Objective Sys. Properties & Performance & Reliability varies greatly depending on the initial conditions. \\
 \cite{okamura_yamada_2020} & Trust Calibration Cues & Adaptive Trust Dynamics & Calibration & Specific cognitive signals used as an active feedback mechanism to push the user to recalibrate their trust \\
 \cite{zhang_et_al_2023} & User Expertise & Human Traits & Experience & Prior knowledge and experience with system \\
 \cite{Haiyan_Kong_ZihanYin_KayeChon_YueYuan_JinhanYu_2023} & Proactive Personality & Human Traits & Disposition & A worker's proactive personality acts as a key moderator that, alongside trust in AI, allows them to leverage AI-supported autonomy into innovative performance \\
